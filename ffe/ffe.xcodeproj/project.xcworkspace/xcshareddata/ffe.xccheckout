@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>31F1EAAF-D405-4198-8132-32A3B3218E60</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ffe</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B629DC2057F5333E79926E205E29F2A840CB32C7</key>
+		<string>github.com:kellegous/eah.io.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ffe/ffe.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B629DC2057F5333E79926E205E29F2A840CB32C7</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:kellegous/eah.io.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B629DC2057F5333E79926E205E29F2A840CB32C7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B629DC2057F5333E79926E205E29F2A840CB32C7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>apps</string>
+		</dict>
+	</array>
+</dict>
+</plist>
