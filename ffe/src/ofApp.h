@@ -19,7 +19,7 @@ class Motion {
         if (count_ >= limit_) {
             cur_rate_ = (rand() / (float)RAND_MAX) * 2*rate_ - rate_;
             count_ = 0;
-            printf("rate = %0.4f value = %0.4f count = %d limit = %d\n", cur_rate_, value_, count_, limit_);
+            // printf("rate = %0.4f value = %0.4f count = %d limit = %d\n", cur_rate_, value_, count_, limit_);
         }
         
         value_ *= (1 - cur_rate_);
@@ -42,7 +42,7 @@ class Motion {
     float value_;
 };
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
  public:
     ofApp();
     void setup();
