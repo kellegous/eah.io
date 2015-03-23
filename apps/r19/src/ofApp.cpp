@@ -25,8 +25,8 @@ void ofApp::setup() {
     ofBackground(0, 0, 0);
     
     // player.loadMovie("CitizenFour-HD.mp4");
-    player.loadMovie("kikis.delivery.service.1989.720p.bluray.x264-en.m4v");
-    // player.loadMovie("tbt.mp4");
+    // player.loadMovie("kikis.delivery.service.1989.720p.bluray.x264-en.m4v");
+    player.loadMovie("tbt.mp4");
     player.setPosition(0.10);
     player.play();
     

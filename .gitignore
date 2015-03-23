@@ -1,6 +1,6 @@
 apps/ffe/bin
 apps/r19/bin
 of_v0.8.4_osx_release
-xcuserdata
-xcsharedata
+**/xcuserdata/**
+**/xcsharedata/**
 apps/data
