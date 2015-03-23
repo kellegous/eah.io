@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+import os
+import random
+import sys
+
+alpha = 'abcdefghijklmnopqrstuvwxyz0123456789'
+
+def GetRoot():
+	return os.path.abspath(os.path.dirname(__file__))
+
+def GenName(root):
+	name = ''.join([alpha[random.randint(0, len(alpha) - 1)] for i in range(3)])
+	if not os.path.exists(os.path.join(root, name)):
+		return name
+	return GenName(root)
+
+def main():
+	print GenName(GetRoot())
+	return 0
+
+if __name__ == '__main__':
+	sys.exit(main())

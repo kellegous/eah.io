@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>31F1EAAF-D405-4198-8132-32A3B3218E60</string>
+	<string>75DCF151-B4DC-4639-A279-C39CB9F719E0</string>
 	<key>IDESourceControlProjectName</key>
-	<string>ffe</string>
+	<string>r19</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B629DC2057F5333E79926E205E29F2A840CB32C7</key>
 		<string>github.com:kellegous/eah.io.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>apps/ffe/ffe.xcodeproj</string>
+	<string>apps/r19/r19.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B629DC2057F5333E79926E205E29F2A840CB32C7</key>
