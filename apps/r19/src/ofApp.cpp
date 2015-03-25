@@ -2,7 +2,7 @@
 
 namespace {
 
-static const int numDivsX = 100;
+static const int numDivsX = 40;
 static const int numDivsY = 60;
     
 static const int padH = 2;
@@ -16,6 +16,11 @@ void SetZ(ofVboMesh& mesh, int index, float z) {
 
 } // anonymous
 
+
+ofApp::ofApp() : amp_(-PI, PI, 0.1f, 10),
+                 zom_(100.f, 600.f, 0.1f, 50) {
+}
+
 void ofApp::setup() {
     ofEnableAlphaBlending();
     ofEnableSmoothing();
@@ -27,7 +32,7 @@ void ofApp::setup() {
     // player.loadMovie("CitizenFour-HD.mp4");
     // player.loadMovie("kikis.delivery.service.1989.720p.bluray.x264-en.m4v");
     player.loadMovie("tbt.mp4");
-    player.setPosition(0.10);
+    player.setPosition(rand() / (float)RAND_MAX);
     player.play();
     
     float dx = player.getWidth() / numDivsX;
@@ -105,7 +110,7 @@ void ofApp::update() {
                            pixels[di+1]/255.f,
                            pixels[di+2]/255.f);
             
-            float z = cos(ofGetFrameNum() * (2*PI/240)) * a.getBrightness() * 100.f;
+            float z = cos(amp_.next() + ofGetFrameNum() * (2*PI/240)) * a.getBrightness() * 100.f;
 
             int ix = 4*(i + j*numDivsX);
             
@@ -114,10 +119,10 @@ void ofApp::update() {
             SetZ(mesh, ix+2, z);
             SetZ(mesh, ix+3, z);
 
-            mesh.setColor(ix, a);
-            mesh.setColor(ix+1, b);
-            mesh.setColor(ix+2, c);
-            mesh.setColor(ix+3, d);
+            mesh.setColor(ix, d);
+            mesh.setColor(ix+1, a);
+            mesh.setColor(ix+2, d);
+            mesh.setColor(ix+3, a);
         }
     }
     
@@ -125,7 +130,7 @@ void ofApp::update() {
     
     //move the camera around the mesh
     ofVec3f camDirection(0,0,1);
-    ofVec3f center(player.getWidth()/2.f, player.getHeight()/2.f, 500.f);
+    ofVec3f center(player.getWidth()/2.f, player.getHeight()/2.f, zom_.next());
     ofVec3f camDirectionRotated = camDirection.rotated(rotateAmount, ofVec3f(1,0,0));
     ofVec3f camPosition = center + camDirectionRotated * 300.f;
     
