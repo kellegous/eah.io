@@ -31,7 +31,8 @@ void ofApp::setup() {
     
     // player.loadMovie("CitizenFour-HD.mp4");
     // player.loadMovie("kikis.delivery.service.1989.720p.bluray.x264-en.m4v");
-    player.loadMovie("tbt.mp4");
+    // player.loadMovie("tbt.mp4");
+    player.loadMovie("deadmau5.0.mp4");
     player.setPosition(rand() / (float)RAND_MAX);
     player.play();
     
