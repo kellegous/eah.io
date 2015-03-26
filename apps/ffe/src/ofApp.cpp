@@ -9,7 +9,7 @@ namespace {
 
 ofApp::ofApp() : amp_(200.f, 450.f, 0.01, 50),
                  rot_(-45.f, 45.f, 0.09, 10),
-                 zom_(150.f, 500.f, 0.03, 30) {}
+                 zom_(250.f, 500.f, 0.03, 30) {}
 
 void ofApp::setup() {
     ofEnableAlphaBlending();
@@ -20,6 +20,7 @@ void ofApp::setup() {
     ofSetVerticalSync(true);
     ofBackground(0x00, 0x00, 0x00);
     
+    ofSetDataPathRoot("../Resources/");
     ofSetLogLevel(OF_LOG_VERBOSE);
     
     // player.loadMovie("kikis.delivery.service.1989.720p.bluray.x264-en.m4v");
@@ -27,7 +28,8 @@ void ofApp::setup() {
     // player.loadMovie("6022_Riders_of_the_California_Surf_01_16_36_00_3mb.m4v");
     // player.loadMovie("tbt.mp4");
     player.loadMovie("deadmau5.0.mp4");
-    player.setPosition(rand() / (float)RAND_MAX);
+    // player.setPosition(rand() / (float)RAND_MAX);
+    player.setPosition(0.015);
     player.play();
     // player.setSpeed(2.f);
     // player.setVolume(0.f);
@@ -59,7 +61,7 @@ void ofApp::setup() {
     cam.setScale(1, -1, 1);
 }
 
-//--------------------------------------------------------------
+
 void ofApp::update() {
     if (!player.isLoaded()) {
         return;
@@ -116,8 +118,7 @@ void ofApp::update() {
 
 }
 
-//--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp::draw() {
     if (!player.isLoaded()) {
         return;
     }
@@ -128,47 +129,29 @@ void ofApp::draw(){
     cam.end();
 }
 
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-
+void ofApp::keyPressed(int key) {
 }
 
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
+void ofApp::keyReleased(int key) {
 }
 
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y){
-
+void ofApp::mouseMoved(int x, int y) {
 }
 
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
+void ofApp::mouseDragged(int x, int y, int button) {
 }
 
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
+void ofApp::mousePressed(int x, int y, int button) {
 }
 
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
+void ofApp::mouseReleased(int x, int y, int button) {
 }
 
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
+void ofApp::windowResized(int w, int h) {
 }
 
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
+void ofApp::gotMessage(ofMessage msg) {
 }
 
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
+void ofApp::dragEvent(ofDragInfo dragInfo) {
 }
