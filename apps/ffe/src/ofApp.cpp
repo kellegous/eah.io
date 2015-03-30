@@ -9,7 +9,8 @@ namespace {
 
 ofApp::ofApp() : amp_(200.f, 450.f, 0.01, 50),
                  rot_(-45.f, 45.f, 0.09, 10),
-                 zom_(250.f, 500.f, 0.03, 30) {}
+                 zom_(250.f, 400.f, 0.03, 30),
+                 bri_(0.f, 0.3f, 0.1, 10) {}
 
 void ofApp::setup() {
     ofEnableAlphaBlending();
@@ -20,16 +21,16 @@ void ofApp::setup() {
     ofSetVerticalSync(true);
     ofBackground(0x00, 0x00, 0x00);
     
-    ofSetDataPathRoot("../Resources/");
+    // ofSetDataPathRoot("../Resources/");
     ofSetLogLevel(OF_LOG_VERBOSE);
     
     // player.loadMovie("kikis.delivery.service.1989.720p.bluray.x264-en.m4v");
     // player.loadMovie("Citizenfour-HD.mp4");
     // player.loadMovie("6022_Riders_of_the_California_Surf_01_16_36_00_3mb.m4v");
-    // player.loadMovie("tbt.mp4");
-    player.loadMovie("deadmau5.0.mp4");
-    // player.setPosition(rand() / (float)RAND_MAX);
-    player.setPosition(0.015);
+    player.loadMovie("tbt.mp4");
+    // player.loadMovie("deadmau5.0.mp4");
+    player.setPosition(rand() / (float)RAND_MAX);
+    // player.setPosition(0.015);
     player.play();
     // player.setSpeed(2.f);
     // player.setVolume(0.f);
@@ -95,10 +96,12 @@ void ofApp::update() {
             ofFloatColor sample(pixels[pdx]/255.f,
                                 pixels[pdx + 1]/255.f,
                                 pixels[pdx + 2]/255.f);
-            
+
             ofVec3f vec = mesh.getVertex(idx);
             vec.z = sample.getBrightness() * z;
             mesh.setVertex(idx, vec);
+            
+            float b = min(sample.getBrightness() + 0.2f, 1.f);
             mesh.setColor(idx, sample);
         }
     }

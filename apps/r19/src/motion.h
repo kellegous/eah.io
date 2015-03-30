@@ -6,7 +6,7 @@
 
 class Motion {
 public:
-    Motion(float min, float max, float rate, int limit);
+    Motion(float min, float max, float rate, int limit, bool enabled=true, bool debug=false);
     float next();
 private:
     float min_;
@@ -16,6 +16,8 @@ private:
     float cur_rate_;
     int count_;
     float value_;
+    bool enabled_;
+    bool debug_;
 };
 
 #endif // MOTION_H_

@@ -26,4 +26,7 @@ class ofApp : public ofBaseApp{
     
     Motion amp_;
     Motion zom_;
+    Motion rotx_;
+    Motion roty_;
+    Motion rotz_;
 };

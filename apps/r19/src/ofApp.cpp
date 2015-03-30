@@ -2,8 +2,8 @@
 
 namespace {
 
-static const int numDivsX = 40;
-static const int numDivsY = 60;
+static const int numDivsX = 80;
+static const int numDivsY = 50;
     
 static const int padH = 2;
 static const int padV = 2;
@@ -13,12 +13,19 @@ void SetZ(ofVboMesh& mesh, int index, float z) {
     vec.z = z;
     mesh.setVertex(index, vec);
 }
-
+    
+void BoostBrightness(ofFloatColor& c, float f) {
+    c.setBrightness(min(c.getBrightness() * f, 1.f));
+}
+    
 } // anonymous
 
 
-ofApp::ofApp() : amp_(-PI, PI, 0.1f, 10),
-                 zom_(100.f, 600.f, 0.1f, 50) {
+ofApp::ofApp() : amp_(-2*PI, 2*PI, 0.1f, 10),
+                 zom_(300.f, 600.f, 0.05f, 50),
+                 rotx_(0.f, 1.f, 0.2f, 5),
+                 roty_(-1.f, 1.f, 0.2f, 10),
+                 rotz_(-1.f, 1.f, 0.2f, 15) {
 }
 
 void ofApp::setup() {
@@ -31,8 +38,8 @@ void ofApp::setup() {
     
     // player.loadMovie("CitizenFour-HD.mp4");
     // player.loadMovie("kikis.delivery.service.1989.720p.bluray.x264-en.m4v");
-    // player.loadMovie("tbt.mp4");
-    player.loadMovie("deadmau5.0.mp4");
+    player.loadMovie("tbt.mp4");
+    // player.loadMovie("deadmau5.0.mp4");
     player.setPosition(rand() / (float)RAND_MAX);
     player.play();
     
@@ -91,6 +98,8 @@ void ofApp::update() {
     int dx = w / numDivsX;
     int dy = h / numDivsY;
     
+    float amp = amp_.next();
+    
     for (int j = 0; j < numDivsY; j++) {
         for (int i = 0; i < numDivsX; i++) {
             int ai = 3*(i*dx + j*dy*w);
@@ -111,7 +120,7 @@ void ofApp::update() {
                            pixels[di+1]/255.f,
                            pixels[di+2]/255.f);
             
-            float z = cos(amp_.next() + ofGetFrameNum() * (2*PI/240)) * a.getBrightness() * 100.f;
+            float z = cos(amp + ofGetFrameNum() * (2*PI/240)) * a.getBrightness() * 300.f;
 
             int ix = 4*(i + j*numDivsX);
             
@@ -120,19 +129,26 @@ void ofApp::update() {
             SetZ(mesh, ix+2, z);
             SetZ(mesh, ix+3, z);
 
-            mesh.setColor(ix, d);
-            mesh.setColor(ix+1, a);
-            mesh.setColor(ix+2, d);
-            mesh.setColor(ix+3, a);
+            BoostBrightness(a, 1.2f);
+            BoostBrightness(b, 1.2f);
+            BoostBrightness(c, 1.2f);
+            BoostBrightness(d, 1.2f);
+            
+            mesh.setColor(ix, a);
+            mesh.setColor(ix+1, b);
+            mesh.setColor(ix+2, c);
+            mesh.setColor(ix+3, d);
         }
     }
     
-    float rotateAmount = -4.f;
+    float rotateAmount = 20.f;
     
     //move the camera around the mesh
     ofVec3f camDirection(0,0,1);
     ofVec3f center(player.getWidth()/2.f, player.getHeight()/2.f, zom_.next());
-    ofVec3f camDirectionRotated = camDirection.rotated(rotateAmount, ofVec3f(1,0,0));
+    
+    ofVec3f dir(rotx_.next(), roty_.next(), rotz_.next());
+    ofVec3f camDirectionRotated = camDirection.rotated(rotateAmount, dir);
     ofVec3f camPosition = center + camDirectionRotated * 300.f;
     
     cam.setPosition(camPosition);

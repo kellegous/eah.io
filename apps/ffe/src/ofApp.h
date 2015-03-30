@@ -65,4 +65,5 @@ class ofApp : public ofBaseApp {
     Motion amp_;
     Motion rot_;
     Motion zom_;
+    Motion bri_;
 };
